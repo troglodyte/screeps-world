@@ -11,8 +11,8 @@ let creepSenses = {
         sources = sources.filter(s => s.pos.x !== 6 && s.pos.y !== 44)
 
         if (sources.length === 1) return sources[0];
-        let randSource = sources[Math.floor(Math.random() * sources.length)];
-        creep.say('mmm resources...')
+        let randSource = sources[helpers.getRandomInt(sources.length)];
+        //creep.say('mmm resources...')
         return randSource.id;
     },
     getStructures: creep => creep.room.find(FIND_STRUCTURES, {
@@ -21,7 +21,18 @@ let creepSenses = {
                 case STRUCTURE_EXTENSION:
                 case STRUCTURE_SPAWN:
                 case STRUCTURE_TOWER:
+                case STRUCTURE_CONTAINER:
                     return helpers.getFreeCapacity(structure);
+                default:
+                    return false;
+            }
+        }
+    }),
+    getContainers: creep => creep.room.find(FIND_STRUCTURES, {
+        filter: (structure) => {
+            switch (structure.structureType) {
+                case STRUCTURE_CONTAINER:
+                    return structure.store.getCapacity(RESOURCE_ENERGY) > 50
                 default:
                     return false;
             }

@@ -3,7 +3,7 @@ const creepActions = require('creepActions')
 const creepMind = require("./creepMind");
 
 let fullCapacityEvent = [];
-fullCapacityEvent.push(creep => creep.say('im full'))
+// fullCapacityEvent.push(creep => creep.say('im full'))
 fullCapacityEvent.push(creepMind.deleteSourceDest)
 fullCapacityEvent.push(creepActions.unloadEnergy)
 

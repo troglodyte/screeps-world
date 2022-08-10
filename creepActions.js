@@ -42,6 +42,7 @@ let creepActions = {
             }
             res === ERR_NOT_IN_RANGE && creep.moveTo(firstEnemy);
         }
+        creep.moveTo(25,25) // hopefully out of peeps way
     },
     upgradeController(creep) {
         if(creep.upgradeController(creep.room.controller) === ERR_NOT_IN_RANGE) {
