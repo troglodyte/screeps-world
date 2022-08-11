@@ -19,6 +19,8 @@ let roleUpgrader = {
             creepActions.upgradeController(creep)
         }
         else {
+
+            // @todo harvest energy if no containers
             let containers = creepSenses.getContainers(creep)
             if (containers.length < 1) {
                 // creep.say('mine')

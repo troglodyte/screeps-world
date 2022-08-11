@@ -18,10 +18,10 @@ const BUILDER_ROLE = 'builder';
 const HARVESTER_ROLE = 'harvester';
 const UPGRADER_ROLE = 'upgrader';
 
-const ATTACKERS_LIMIT = 10;
-const BUILDER_LIMIT = 7;
-const HARVESTER_LIMIT = 7;
-const UPGRADER_LIMIT = 7;
+const ATTACKERS_LIMIT = 4;
+const BUILDER_LIMIT = 4;
+const HARVESTER_LIMIT = 4;
+const UPGRADER_LIMIT = 4;
 
 /**
  * Game.spawns.Spawn1.createCreep([WORK],'Harvester1',{ role: 'harvester', test : 'test1'});
@@ -38,7 +38,7 @@ const spawnSmall = (role) => (newName) => {
     let body = []
     switch (role) {
         case ATTACKERS_ROLE:
-            body = [RANGED_ATTACK, MOVE, TOUGH] //, TOUGH, TOUGH, TOUGH, TOUGH] // 250
+            body = [RANGED_ATTACK, MOVE, MOVE, TOUGH] //, TOUGH, TOUGH, TOUGH, TOUGH] // 250
             break;
         case BUILDER_ROLE:
         case HARVESTER_ROLE:
@@ -79,13 +79,13 @@ module.exports.loop = function () {
         // excess.map(killCreeps)
     }
 
-    if (harvesters.length > Math.floor(HARVESTER_LIMIT/2)) {
+    if (harvesters.length > 2) {
         if (typeof attackers === 'undefined' || attackers.length < ATTACKERS_LIMIT) {
-            getEnergy(SPAWN1) > 200 && spawnSmall(ATTACKERS_ROLE)('Attacker-')
+            getEnergy(SPAWN1) > 300 && spawnSmall(ATTACKERS_ROLE)('Attacker-')
         }
     }
 
-    if (harvesters.length > Math.floor(HARVESTER_LIMIT/2) ) {
+    if (attackers.length > 2 && harvesters.length > Math.floor(HARVESTER_LIMIT/2) ) {
         if (typeof upgraders === 'undefined' || upgraders.length < UPGRADER_LIMIT) {
             getEnergy(SPAWN1) > 200 && spawnSmall(UPGRADER_ROLE)('Upgrader-');
         }

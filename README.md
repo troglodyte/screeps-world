@@ -1,5 +1,22 @@
-
 https://docs.screeps.com/api/#Room.createConstructionSite
+
+#todo
+[ ] Automatic road building
+    find path to x (resource|spawn|room controller) 
+    get next 'step' in path
+    use that x,y to create road
+
+[ ] Automatic extension/container building
+    currently we just get x+/y+ cords until we can build on
+    adjust to encircle the base
+    
+[ ] Create event's based on RCL level (room control level)
+    For instance, we can only create x amount of extensions per RCL
+    and you can only create towers at RCL 3+
+
+[ ] walls, ramparts 
+[ ] What else is there?
+
 
 ```js
 // x y structureType name
