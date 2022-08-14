@@ -12,6 +12,21 @@ let helpers = {
     getEnergy: spawn => Game.spawns[spawn].room.energyAvailable,
     getRandomInt: max => Math.floor(Math.random() * max),
     getRandomBool: Math.floor(Math.random() * 0.5),
+    calculateScreepCost: bodyParts =>
+        bodyParts.reduce(
+            (cost, bodyPart) => {
+                return cost + {
+                    MOVE: 50,
+                    WORK: 100,
+                    CARRY: 50,
+                    ATTACK: 80,
+                    RANGED_ATTACK: 150,
+                    HEAL: 250,
+                    CLAIM: 600,
+                    TOUGH: 10,
+                }[bodyPart.toUpperCase()]
+            }, 0)
+
 }
 
 module.exports = helpers;

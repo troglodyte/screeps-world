@@ -23,7 +23,7 @@ let structureExtension = {
             flipFlop = !flipFlop;
             flipFlop ? x++ : y++;
             res = createExtension(x)(y);
-            console.log(x + ' ' + y + ' res: ' + res)
+            // console.log(x + ' ' + y + ' res: ' + res)
         }
 
         if (res === 0) {
@@ -35,7 +35,7 @@ let structureExtension = {
             flipFlop = !flipFlop;
             flipFlop ? x-- : y--;
             res = createExtension(x)(y);
-            console.log(x + ' ' + y + ' res: ' + res)
+            // console.log(x + ' ' + y + ' res: ' + res)
         }
     }
 }

@@ -18,7 +18,7 @@ const BUILDER_ROLE = 'builder';
 const HARVESTER_ROLE = 'harvester';
 const UPGRADER_ROLE = 'upgrader';
 
-const ATTACKERS_LIMIT = 4;
+const ATTACKERS_LIMIT = 8;
 const BUILDER_LIMIT = 4;
 const HARVESTER_LIMIT = 4;
 const UPGRADER_LIMIT = 4;
@@ -38,7 +38,7 @@ const spawnSmall = (role) => (newName) => {
     let body = []
     switch (role) {
         case ATTACKERS_ROLE:
-            body = [RANGED_ATTACK, MOVE, MOVE, TOUGH] //, TOUGH, TOUGH, TOUGH, TOUGH] // 250
+            body = [RANGED_ATTACK,RANGED_ATTACK,RANGED_ATTACK, MOVE, MOVE, MOVE, MOVE, TOUGH] //, TOUGH, TOUGH, TOUGH, TOUGH] // 250
             break;
         case BUILDER_ROLE:
         case HARVESTER_ROLE:
@@ -72,6 +72,7 @@ module.exports.loop = function () {
     let builders = getAll(BUILDER_ROLE);
     let attackers = getAll(ATTACKERS_ROLE);
 
+    // todo if game.spawn['spawn'].spawning = skip
     if (typeof harvesters === 'undefined' || harvesters.length < HARVESTER_LIMIT) {
         getEnergy(SPAWN1) > 200 && spawnSmall(HARVESTER_ROLE)('Harvester-')
     } else {
